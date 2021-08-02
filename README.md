@@ -30,9 +30,11 @@ And that's how this emerged. I made a script to run on native Android using [Ter
 
 ### Usage
 Install [Termux](https://f-droid.org/package/com.termux), open it, and paste the following command, and press enter:
+
 ```sh
 curl -L "https://raw.githubusercontent.com/shrihanDev/hml/master/start.sh" | bash
 ```
 Let it do its work. It will ask for confirmations on some things, please do it!
+
 ---
 Bye! Enjoy!
