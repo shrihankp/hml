@@ -22,7 +22,7 @@ And that's how this emerged. I made a script to run on native Android using [Ter
 8. The name "setIsFromMockProvider" is searched for in the file. Then, a line which contains "0x1" _directly before_ the line where the boolean is defined.
 9. The required line is changed so that it contains "0x0" (false) instead of "0x1" (true).
 10. The baksmali output folder is recompiled using smali.jar. Since we have modified the file, the recompilation will occur on the patched files.
-11. The unzipped files is zipped back to services.jar, **with the modified classes.dex**.
+11. The unzipped files are zipped back to services.jar, **with the modified classes.dex**.
 12. Finally, a Magisk module is created conforming to [this format](https://topjohnwu.github.io/Magisk/guides.html).
 13. The user is asked for granting storage permissions so that the Magisk module can be moved to the Internal Storage.
 14. The Magisk module is moved to Internal Storage. Additionally, if the user wishes to, the Termux app is cleaned up so that it does not consume storage space.
