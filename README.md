@@ -8,7 +8,7 @@ A long story, really. First, I discovered a thing called [Smali Patcher](https:/
 
 Then, I discovered the [Smali Patcher Port by J. Fronny on GitLab](https://gitlab.com/JFronny/smalipatcher), which supported running on native Android. I tried it, and it didn't work, and I had no idea why. Thankfully, it was open-source, so I read deep into that and I found that it is quite possible to patch it manually.
 
-And that's how this emerged. I made a script to run on native Android using [Termux](https://f-droid.org/package/com.termux), with some nice goodies, too!
+And that's how this emerged. I made a script to run on native Android using [Termux](https://f-droid.org/packages/com.termux), with some nice goodies, too!
 
 ## How?
 ### Strategy
@@ -29,7 +29,7 @@ And that's how this emerged. I made a script to run on native Android using [Ter
 15. That's it! Install the module, reboot, and voila!
 
 ### Usage
-Install [Termux](https://f-droid.org/package/com.termux), open it, and paste the following command, and press enter:
+Install [Termux](https://f-droid.org/packages/com.termux), open it, and paste the following command, and press enter:
 
 ```sh
 curl -L "https://raw.githubusercontent.com/shrihanDev/hml/master/start.sh" | bash
