@@ -19,7 +19,7 @@ And that's how this emerged. I made a script to run on native Android using [Ter
 5. The required tools, [smali/baksmali](https://github.com/JesusFreke/smali) and [update-binary](https://github.com/topjohnwu/Magisk/blob/master/scripts/module_installer.sh) for [Magisk](https://github.com/topjohnwu/Magisk), are downloaded.
 6. The baksmali.jar tool is run on the classes.dex file to get us the raw smali files for the required patching.
 7. There exists a file named MockProvider.smali inside <baksmali_output_folder>/com/android/server/location. Inside of it, a boolean is defined named "setIsFromMockProvider", which is set to true by default so that the apps can detect if the location is being faked. If it will be set to false, apps would think that the mock location updates are, in fact, real location updates.
-8. The name "setIsFromMockProvider" is searched for in the file. Then, a line which contains "0x1" _directly before_ the line where the boolean is defined.
+8. The name "setIsFromMockProvider" is searched for in the file. Then, a line which contains "0x1" _directly before_ the line where the boolean is defined, is searched for.
 9. The required line is changed so that it contains "0x0" (false) instead of "0x1" (true).
 10. The baksmali output folder is recompiled using smali.jar. Since we have modified the file, the recompilation will occur on the patched files.
 11. The unzipped files are zipped back to services.jar, **with the modified classes.dex**.
