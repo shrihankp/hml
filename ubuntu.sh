@@ -1,7 +1,7 @@
 #!/bin/bash
 
-. "logging.sh"
-. "try-catch.sh"
+. "util/logging.sh"
+. "util/try-catch.sh"
 
 info "We're inside of Ubuntu! Starting the patching process..."
 sleep 1

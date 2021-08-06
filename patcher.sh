@@ -29,7 +29,7 @@ info "#2 Writing a script to run inside Ubuntu..."
 try {
   cat "${script_dir}/ubuntu.sh" > "${ubuntu_bashrc}"
   echo "logout" >> "${ubuntu_bashrc}"
-  cp -f "${script_dir}/util/*" "$(dirname "${ubuntu_bashrc}")"
+  cp -rf "${script_dir}/util" "$(dirname "${ubuntu_bashrc}")"
 } catch {
   error "writing the script"
   exit 2
