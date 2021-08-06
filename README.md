@@ -29,10 +29,13 @@ And that's how this emerged. I made a script to run on native Android using [Ter
 15. That's it! Install the module, reboot, and voila!
 
 ### Usage
-Install [Termux](https://f-droid.org/packages/com.termux), open it, and paste the following command, and press enter:
+Install [Termux](https://f-droid.org/packages/com.termux), open it, and paste the following commands, and press enter:
 
 ```sh
-curl -L "https://raw.githubusercontent.com/shrihanDev/hml/master/start.sh" | bash
+mkdir hml && cd hml
+curl -Lo start "https://raw.githubusercontent.com/shrihanDev/hml/master/start.sh"
+chmod +x start
+./start
 ```
 Let it do its work. It will ask for confirmations on some things, please do it!
 
