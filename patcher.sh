@@ -57,12 +57,19 @@ try {
 	exit 5
 }
 
+try {
+	conf "Ready?"
+} catch {
+	error "Did not confirm permitting storage. Aborted." "n"
+	exit 6
+}
+
 info "#4 Moving the module to your internal storage..."
 try {
 	mv -f "$(dirname "${ubuntu_bashrc}")/HML.zip" "/sdcard/"
 } catch {
   error "moving the generated Magisk module to Internal Storage"
-  exit 5
+  exit 7
 }
 
 success "Completed!"
