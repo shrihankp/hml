@@ -39,5 +39,6 @@ chmod +x start
 ```
 Let it do its work. It will ask for confirmations on some things, please do it!
 
+**NOTE: Only works on Android 10 and below!! Android 11 causes bootloops!**
 ---
 Bye! Enjoy!
