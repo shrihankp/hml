@@ -84,7 +84,7 @@ try {
 
 info "[Optional] #5 Cleaning up Termux..."
 try {
-	proot-distro uninstall ubuntu
+	proot-distro remove ubuntu
 	pkg uninstall proot-distro -y
 	apt autoremove
 } catch {
