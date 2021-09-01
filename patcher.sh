@@ -1,7 +1,7 @@
 #!/bin/bash
 
 script_dir="$( dirname $(realpath $0) )"
-ubuntu_bashrc="${PREFIX}/var/lib/proot-distro/installed-rootfs/ubuntu-20.04/root/.bashrc"
+ubuntu_bashrc="${PREFIX}/var/lib/proot-distro/installed-rootfs/ubuntu/root/.bashrc"
 
 . "${script_dir}/util/logging.sh"
 . "${script_dir}/util/try-catch.sh"
@@ -19,7 +19,7 @@ echo
 info "#1 Installing Ubuntu inside of Termux..."
 try {
   pkg install proot-distro
-  proot-distro install "ubuntu-20.04"
+  proot-distro install "ubuntu"
 } catch {
   error "installing Ubuntu 20.04"
 	exit 1
@@ -37,7 +37,7 @@ try {
 
 info "#3 Logging into Ubuntu for the REAL stuff..."
 {
-	proot-distro login 'ubuntu-20.04'
+	proot-distro login 'ubuntu'
 } || {
   error "logging in to Ubuntu for the patching process"
   exit 3
@@ -84,7 +84,7 @@ try {
 
 info "[Optional] #5 Cleaning up Termux..."
 try {
-	proot-distro uninstall ubuntu-20.04
+	proot-distro uninstall ubuntu
 	pkg uninstall proot-distro -y
 	apt autoremove
 } catch {
