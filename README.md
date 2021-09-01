@@ -39,7 +39,7 @@ chmod +x start
 ```
 Let it do its work. It will ask for confirmations on some things, please do it!
 
-**NOTE: Only works on Android 10 and below!! Android 11 causes bootloops!**
+~~NOTE: Only works on Android 10 and below!! Android 11 causes bootloops!~~ Fixed now.
 
 ## Help! My device doesn't turn on!
 To rescue a bootlooped device, first hard shut down the device. If the device has a removable battery, remove it and put it on again. If it doesn't, you need to hold the power button for 20 to 25 seconds. If that doesn't work, your best bet will be to make it bootloop until the battery is completely discharged, and plug it in. After it is done, do either of the following:
