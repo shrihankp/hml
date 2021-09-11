@@ -28,7 +28,7 @@ try {
 
 info "Fetching services.jar..."
 try {
-	cp "/system/framework/services.jar" "."
+  cp "/system/framework/services.jar" "."
 } catch {
   error "copying /system/framework/services.jar"
   exit 19
@@ -36,7 +36,7 @@ try {
 
 info "Unzipping services.jar..."
 try {
-	unzip "services.jar" 
+  unzip "services.jar" 
 } catch {
   error "unzipping services.jar"
   exit 20
@@ -44,7 +44,7 @@ try {
 
 info "Baksmaling classes.dex..."
 try {
-	java -Xmx700M -jar baksmali.jar d classes.dex -o classes
+  java -Xmx700M -jar baksmali.jar d classes.dex -o classes
 } catch {
   error "baksmaling classes.dex"
   exit 21
@@ -64,7 +64,7 @@ try {
     fi
   done
 
-	mod_line="$(echo "${req_line}" | sed 's/0x1/0x0/g')"
+  mod_line="$(echo "${req_line}" | sed 's/0x1/0x0/g')"
   lines[$req_idx]="${mod_line}"
   printf "%s\n" "${lines[@]}" > "${req_file}"
 } catch {
