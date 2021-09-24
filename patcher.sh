@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 script_dir="$( dirname $(realpath $0) )"
 ubuntu_bashrc="${PREFIX}/var/lib/proot-distro/installed-rootfs/ubuntu/root/.bashrc"

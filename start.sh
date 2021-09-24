@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Downloading the patcher files..."
 curl -Lo patcher.sh "https://raw.githubusercontent.com/shrihanDev/hml/master/patcher.sh"
 curl -Lo ubuntu.sh "https://raw.githubusercontent.com/shrihanDev/hml/master/ubuntu.sh"
