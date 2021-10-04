@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 
 . "util/logging.sh"
 . "util/try-catch.sh"
