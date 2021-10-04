@@ -6,22 +6,22 @@ _log(){
   GREEN=$(echo -en '\033[0;32m')
   BLUE=$(echo -en '\033[0;34m')
 
-  message="${1}" color="${2^^}" type="${3}"
+  message="${1}" color="${2^^}"
 
   echo "${BLUE}[${!color}*${BLUE}] ${!color}${message}${NOCOLOR}"
   # [ "${4}" == "y" ] && echo "[$(date +"%D @ %T")] ${type^^} - ${message}" >> "$logfile"
 }
 
 success(){
-  _log "${1}" "green" "success"
+  _log "${1}" "green"
 }
 info(){
-  _log "${1}" "blue" "info"
+  _log "${1}" "blue"
 }
 error(){
   message="${1}"
   [ ! "${2}" == "n" ] && message="An unexpected error occured while ${1}. Please check the above output for details. It is recommended to create an issue on GitHub with a considerable excerpt from the above logs."
-  _log "${message}" "red" "error"
+  _log "${message}" "red"
 }
 
 conf(){
