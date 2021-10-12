@@ -83,7 +83,7 @@ try {
 
 info "Zipping everything back to services.jar..."
 try { 
-zip -r services.jar META-INF classes.dex classes2.dex
+zip services.jar classes.dex
 } catch {
   error "zipping the files to services.jar"
   exit 24
