@@ -42,17 +42,19 @@ try {
   exit 20
 }
 
-info "Baksmaling classes.dex..."
+info "Baksmaling classes*.dex..."
 try {
-  java -Xmx700M -jar baksmali.jar d classes.dex -o classes
+  for dex in $(ls classes*.dex); do
+    java -Xmx500M -jar baksmali.jar d -j 12 $dex -o ${dex%.dex}
+  done
 } catch {
-  error "baksmaling classes.dex"
+  error "baksmaling classes*.dex"
   exit 21
 }
 
 info "Patching the required file..."
 try {
-  req_file="classes/com/android/server/location/MockProvider.smali"
+  req_file="$(find classes* -name 'MockProvider.smali')"
   req_bool="setIsFromMockProvider"
 
   mapfile -t lines < ${req_file}
@@ -72,10 +74,12 @@ try {
   exit 22
 }
 
-info "Re-smaling to classes.dex..."
+info "Re-smaling to classes*.dex..."
 try {
-  rm -f classes.dex
-  java -Xmx700M -jar smali.jar a classes -o classes.dex
+  rm -f classes*.dex
+  for smalidir in $(ls classes*); do
+    java -Xmx500M -jar smali.jar a -j 12 $smalidir -o "${smalidir}.dex"
+  done
 } catch {
   error "smaling classes folder back to classes.dex"
   exit 23
@@ -83,7 +87,7 @@ try {
 
 info "Zipping everything back to services.jar..."
 try { 
-zip services.jar classes.dex
+  zip services.jar classes*.dex
 } catch {
   error "zipping the files to services.jar"
   exit 24
