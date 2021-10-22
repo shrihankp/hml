@@ -52,12 +52,46 @@ try {
   exit 21
 }
 
-info "Patching the required file..."
+req_file=""
+req_bool="setIsFromMockProvider"
+
+info "Finding the required file..."
 try {
   req_file="$(find classes* -name 'MockProvider.smali')"
-  req_bool="setIsFromMockProvider"
+  if [[ -z "${req_file}" ]]; then
+    exit ${RANDOM}
+  fi
+} catch {
+  error "finding the required file"
+  exit 22
+}
 
-  mapfile -t lines < ${req_file}
+lines=()
+
+info "Preparing for patch..."
+try {
+  mapfile -t lines < "${req_file}"
+} catch {
+  error "preparing for patching"
+  exit 23
+}
+
+info "Checking if ${req_bool} is already patched..."
+try {
+  for idx in "${!lines[@]}"; do
+    if [[ "${lines[idx]}" == *"${req_bool}"* ]]; then
+      line=$(printf '%s\n' "${lines[@]:0:idx}" | grep "0x0")
+      [[ "${line}" == *"0x0"* ]] && exit ${RANDOM}
+    fi
+    break
+  done
+} catch {
+  info "${req_bool} is already patched! Exitting..."
+  exit 0
+}
+
+info "Patching the required file..."
+try {
   for idx in "${!lines[@]}"; do
     if [[ "${lines[idx]}" == *"${req_bool}"* ]]; then
       req_line=$(printf '%s\n' "${lines[@]:0:idx}" | grep -q "0x1")
@@ -71,18 +105,18 @@ try {
   printf "%s\n" "${lines[@]}" > "${req_file}"
 } catch {
   error "patching ${req_bool} defined at ${req_file}"
-  exit 22
+  exit 24
 }
 
 info "Re-smaling to classes*.dex..."
 try {
   rm -f classes*.dex
-  for smalidir in $(ls classes*); do
+  for smalidir in "classes*"; do
     java -Xmx500M -jar smali.jar a -j 12 $smalidir -o "${smalidir}.dex"
   done
 } catch {
   error "smaling classes folder back to classes.dex"
-  exit 23
+  exit 25
 }
 
 info "Zipping everything back to services.jar..."
@@ -90,7 +124,7 @@ try {
   zip services.jar classes*.dex
 } catch {
   error "zipping the files to services.jar"
-  exit 24
+  exit 26
 }
 
 info "Creating a Magisk module..."
@@ -114,7 +148,7 @@ EOF
   cd ../
 } catch {
   error "creating the Magisk module"
-  exit 25
+  exit 27
 }
 
 success "All done! Exiting Ubuntu..."
