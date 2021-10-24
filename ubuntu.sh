@@ -104,7 +104,7 @@ try {
 info "Re-smaling to classes*.dex..."
 try {
   rm -f classes*.dex
-  for smalidir in "classes*"; do
+  for smalidir in classes*; do
     java -Xmx500M -jar smali.jar a -j 12 $smalidir -o "${smalidir}.dex"
   done
 } catch {
