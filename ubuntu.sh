@@ -79,7 +79,7 @@ try {
   done
 } catch {
   info "${req_bool} is already patched! Exitting..."
-  exit 0
+  exit 127
 }
 
 info "Patching the required file..."

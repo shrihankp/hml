@@ -39,6 +39,9 @@ info "#3 Logging into Ubuntu for the REAL stuff..."
   proot-distro login 'ubuntu'
 } || {
   uberr=$?
+  if [ "${uberr}" == 127 ]; then
+    exit 0
+  fi
   error "logging in to Ubuntu for the patching process"
   exit $(expr $uberr + 3)
 }
