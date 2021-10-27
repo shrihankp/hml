@@ -98,7 +98,7 @@ try {
   printf "%s\n" "${lines[@]}" > "$(cat required_file_path)"
 } catch {
   error "patching ${req_bool} defined at $(cat required_file_path)"
-  exit 24
+  exit 23
 }
 
 info "Re-smaling to classes*.dex..."
@@ -109,7 +109,7 @@ try {
   done
 } catch {
   error "smaling classes folder back to classes.dex"
-  exit 25
+  exit 24
 }
 
 info "Zipping everything back to services.jar..."
@@ -117,7 +117,7 @@ try {
   zip services.jar classes*.dex
 } catch {
   error "zipping the files to services.jar"
-  exit 26
+  exit 25
 }
 
 info "Creating a Magisk module..."
@@ -141,7 +141,7 @@ EOF
   cd ../
 } catch {
   error "creating the Magisk module"
-  exit 27
+  exit 26
 }
 
 success "All done! Exiting Ubuntu..."
