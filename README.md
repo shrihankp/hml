@@ -33,7 +33,7 @@ Install [Termux](https://f-droid.org/packages/com.termux), open it, and paste th
 
 ```sh
 mkdir hml && cd hml
-curl -Lo start "https://raw.githubusercontent.com/shrihanDev/hml/master/start.sh"
+curl -Lo start "https://raw.githubusercontent.com/shrihanDev/hml/main/start.sh"
 chmod +x start
 ./start
 ```
