@@ -1,3 +1,7 @@
+# Update: [#1 (comment)](https://github.com/shrihanDev/hml/issues/1#issuecomment-1615660924)
+
+---
+
 # HideMockLocations
 
 ## What?
